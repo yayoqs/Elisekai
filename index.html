@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js"></script>
+  <title>El異Sekai</title>
+</head>
+<body>
+	<h1>El異Sekai</h1>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>el異Sekai — el otro mundo</title>
+<meta name="description" content="el異Sekai: un mundo aparte para tu día a día. mirefugio, lataberna, eltaller, lavitrina, mismascotas y realimenta.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>異</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EFEAD9;
+    --surface: #E2DBC4;
+    --surface-2: #DED5B4;
+    --line: #B8AE8E;
+    --line-strong: #8f8664;
+    --accent: #5C6B4F;
+    --accent-2: #A8452E;
+    --text: #2B281F;
+    --text-dim: #6b634c;
+    --font-display: 'Piazzolla', Georgia, serif;
+    --font-label: 'Barlow Condensed', sans-serif;
+    --maxw: 720px;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  img,svg{ max-width:100%; }
+  a{ color: var(--accent-2); }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(239,234,217,.92);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top: 12px; padding-bottom: 12px;
+  }
+  .brand{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: .01em;
+  }
+  .brand span{ color: var(--accent-2); }
+  .navlinks{ display:none; gap: 18px; font-family: var(--font-label); font-size: 15px; letter-spacing:.02em; }
+  .navlinks a{ color: var(--text-dim); text-decoration:none; }
+  .navlinks a:hover{ color: var(--accent-2); }
+  @media(min-width: 640px){ .navlinks{ display:flex; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 56px 0 44px; text-align:center; }
+  .kanji{
+    font-size: 64px;
+    color: var(--accent-2);
+    line-height:1;
+    margin-bottom: 6px;
+  }
+  h1.title{
+    font-size: clamp(30px, 7vw, 46px);
+    margin: 0 0 16px;
+    font-weight: 700;
+    display:inline-block;
+    border-bottom: 2px dotted var(--accent-2);
+    padding-bottom: 10px;
+  }
+  .tagline{
+    font-family: var(--font-label);
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 420px;
+    margin: 0 auto 30px;
+    min-height: 26px;
+    transition: opacity .25s ease;
+  }
+  .cta{
+    display:inline-block;
+    background: var(--accent-2);
+    color: var(--bg);
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: .02em;
+    padding: 13px 30px;
+    text-decoration:none;
+    border: none;
+    cursor: pointer;
+  }
+  .cta.ghost{
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding: 40px 0; }
+  section + section{ border-top: 1px solid var(--line); }
+  .eyebrow{
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  h2{
+    font-size: 24px;
+    margin: 0 0 18px;
+    font-weight: 700;
+  }
+  .lede{ color: var(--text-dim); max-width: 60ch; }
+
+  /* ---------- ORIGEN ---------- */
+  .origen p{ margin: 0 0 14px; max-width: 62ch; }
+
+  /* ---------- LUGARES (mapa) ---------- */
+  .lugar-list{ display:flex; flex-direction:column; gap:16px; margin-top: 24px; }
+  .lugar{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 16px 18px;
+    position: relative;
+  }
+  .lugar::before{
+    content: "";
+    position: absolute;
+    left: -1px; top: 14px;
+    width: 6px; height: 6px;
+    background: var(--accent-2);
+    border-radius: 50%;
+  }
+  .lugar .nombre{
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--accent-2);
+    font-size: 16px;
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  }
+  .lugar .desc{ margin-top:4px; font-size: 16px; }
+  .conecta{
+    display:inline-block;
+    font-family: var(--font-label);
+    font-size: 12px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 1px 7px;
+    letter-spacing: .02em;
+  }
+  @media (min-width: 620px){
+    .lugar-list{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+    .lugar:nth-child(2n){ margin-top: 22px; }
+    .lugar:nth-child(3n){ margin-top: 6px; }
+  }
+
+  /* ---------- GUIA / VIDEOS ---------- */
+  .video-slot{
+    background: var(--surface-2);
+    border: 1px dashed var(--line-strong);
+    aspect-ratio: 16/9;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--text-dim);
+    font-family: var(--font-label);
+    font-size: 14px;
+    text-align:center;
+    padding: 12px;
+  }
+  .guia-general{ margin-bottom: 26px; }
+  .acordeon{ border-top: 1px solid var(--line); }
+  .acordeon-item{ border-bottom: 1px solid var(--line); }
+  .acordeon-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding: 14px 2px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .acordeon-item summary::-webkit-details-marker{ display:none; }
+  .acordeon-item summary .plus{ color: var(--accent-2); font-size: 20px; }
+  .acordeon-item[open] summary .plus{ transform: rotate(45deg); display:inline-block; }
+  .acordeon-item .contenido{ padding: 0 2px 18px; }
+
+  /* ---------- UNETE ---------- */
+  .unete{ background: var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .pasos{ list-style:none; margin: 22px 0 28px; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .pasos li{
+    font-family: var(--font-label);
+    font-size: 16px;
+    padding-left: 18px;
+    position:relative;
+  }
+  .pasos li::before{
+    content:"—";
+    position:absolute; left:0; color: var(--accent-2);
+  }
+  .pasos b{ font-family: var(--font-display); font-weight:700; color: var(--text); }
+  .pasos .tag{ color: var(--accent-2); font-weight:600; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 34px 0 50px; }
+  footer .wrap{ display:flex; flex-direction:column; gap:6px; }
+  footer .brand-small{ font-family: var(--font-display); font-weight:700; }
+  footer p{ margin:0; color: var(--text-dim); font-size: 14px; font-family: var(--font-label); }
+  .estado{
+    display:inline-block;
+    font-family: var(--font-label);
+    font-size: 12px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 2px 8px;
+    margin-top: 6px;
+    width: fit-content;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">el<span>異</span>Sekai</a>
+    <div class="navlinks">
+      <a href="#lugares">Lugares</a>
+      <a href="#guia">Guía</a>
+      <a href="#unete">Únete</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="wrap">
+    <div class="kanji">異</div>
+    <h1 class="title">el異Sekai</h1>
+    <p class="tagline" id="tagline">Tu rutina, pero como aventura.</p>
+    <a href="#unete" class="cta">Entra al mundo</a>
+  </div>
+</header>
+
+<section class="origen">
+  <div class="wrap">
+    <p class="eyebrow">Por qué existe</p>
+    <h2>Un mundo que se fue armando solo</h2>
+    <p>El 異Sekai nació como una idea simple: una app para organizar eventos. De ahí salió <strong>lataberna</strong>, pensada para hacer más fácil el control de un pub o restaurante. Con el tiempo esa idea creció — apareció un perfil, que merecía su propio espacio (<strong>mirefugio</strong>), y luego otros lugares: <strong>eltaller</strong>, <strong>lavitrina</strong>, <strong>mismascotas</strong>. Cada uno resolvía algo distinto, pero todos hablaban entre sí.</p>
+    <p>Así nació el mundo: no como un plan desde el día uno, sino como algo que fue creciendo pieza por pieza. Y sigue creciendo — cada nuevo lugar nace de una necesidad real, no de un plan cerrado.</p>
+  </div>
+</section>
+
+<section id="lugares">
+  <div class="wrap">
+    <p class="eyebrow">El mapa</p>
+    <h2>Los lugares</h2>
+    <p class="lede">Cada uno resuelve algo distinto. Algunos ya conversan entre sí.</p>
+
+    <div class="lugar-list">
+      <div class="lugar">
+        <div class="nombre">mirefugio</div>
+        <div class="desc">Tu perfil, tus datos, tu mundo personal.</div>
+      </div>
+      <div class="lugar">
+        <div class="nombre">lataberna <span class="conecta">usa mirefugio</span></div>
+        <div class="desc">Gestiona tu pub o restaurante, con las preferencias de cada jugador siempre a mano.</div>
+      </div>
+      <div class="lugar">
+        <div class="nombre">eltaller</div>
+        <div class="desc">Tus planos, materiales y proyectos en un solo lugar.</div>
+      </div>
+      <div class="lugar">
+        <div class="nombre">lavitrina</div>
+        <div class="desc">El espacio para mostrar lo que creas.</div>
+      </div>
+      <div class="lugar">
+        <div class="nombre">mismascotas</div>
+        <div class="desc">Todo lo relacionado a tus animales.</div>
+      </div>
+      <div class="lugar">
+        <div class="nombre">realimenta <span class="conecta">abastece lataberna</span></div>
+        <div class="desc">Comida con origen, conectada directo a los locales del mundo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="guia">
+  <div class="wrap">
+    <p class="eyebrow">Cómo funciona</p>
+    <h2>Una guía rápida al mundo</h2>
+    <p class="lede guia-general">Un vistazo general — y si te interesa alguna app en particular, ábrela abajo para ver más.</p>
+    <div class="video-slot guia-general">Pon un video general aquí</div>
+
+    <div class="acordeon">
+      <details class="acordeon-item">
+        <summary>mirefugio <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de mirefugio aquí</div>
+        </div>
+      </details>
+      <details class="acordeon-item">
+        <summary>lataberna <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de lataberna aquí</div>
+        </div>
+      </details>
+      <details class="acordeon-item">
+        <summary>eltaller <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de eltaller aquí</div>
+        </div>
+      </details>
+      <details class="acordeon-item">
+        <summary>lavitrina <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de lavitrina aquí</div>
+        </div>
+      </details>
+      <details class="acordeon-item">
+        <summary>mismascotas <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de mismascotas aquí</div>
+        </div>
+      </details>
+      <details class="acordeon-item">
+        <summary>realimenta <span class="plus">+</span></summary>
+        <div class="contenido">
+          <div class="video-slot">Pon un video de realimenta aquí</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="unete" class="unete">
+  <div class="wrap">
+    <p class="eyebrow">Únete</p>
+    <h2>Crea tu perfil en el 異Sekai y descubre las funciones y aplicaciones</h2>
+    <ul class="pasos">
+      <li>Administra tu espacio personal <span class="tag">[mirefugio]</span></li>
+      <li>Conserva tus preferencias gastronómicas <span class="tag">[lataberna]</span></li>
+      <li>Guarda tus planos y proyectos <span class="tag">[eltaller]</span></li>
+      <li>Expón tu arte <span class="tag">[lavitrina]</span></li>
+      <li>Cuida a tus mascotas <span class="tag">[mismascotas]</span></li>
+      <li>Conecta con comida de origen <span class="tag">[realimenta]</span></li>
+    </ul>
+    <a href="#" class="cta">Entra al mundo</a>
+    <a href="#" class="cta ghost" style="margin-left:10px;">Propón una idea</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand-small">el異Sekai</div>
+    <p>el otro mundo — un ecosistema en crecimiento.</p>
+    <span class="estado">En construcción activa</span>
+  </div>
+</footer>
+
+<script>
+  const taglines = [
+    "Tu rutina, pero como aventura.",
+    "¿Y si tu día a día fuera otro mundo?",
+    "el異Sekai: donde lo cotidiano se vuelve tu propia partida.",
+    "Otro mundo. La misma vida. Más ganas de vivirla.",
+    "Cada rutina, un nivel. Cada lugar, una historia.",
+    "No es escapar de tu vida. Es jugarla distinto."
+  ];
+  const el = document.getElementById('tagline');
+  el.textContent = taglines[Math.floor(Math.random() * taglines.length)];
+  let i = taglines.indexOf(el.textContent);
+  setInterval(() => {
+    i = (i + 1) % taglines.length;
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = taglines[i];
+      el.style.opacity = 1;
+    }, 250);
+  }, 4000);
+</script>
+
+</body>
+</html>
